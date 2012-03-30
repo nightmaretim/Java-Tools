@@ -19,7 +19,7 @@ public class StaticNumberProcesserTest {
 	@Test
 	public void testDisitCheckDouble() {
 		double a = 1750.235;
-		
+
 		boolean b = StaticNumberProcesser.disitCheckDouble(a, 4,3);
 
 		assertEquals(StaticNumberProcesser.disitCheckDouble(a, 3,3),false);
@@ -29,6 +29,21 @@ public class StaticNumberProcesserTest {
 		assertEquals(StaticNumberProcesser.disitCheckDouble(a, 5,3),true);
 		assertEquals(StaticNumberProcesser.disitCheckDouble(a, 5,4) , true);
 
+	}
+
+	@Test
+	public void testParseIntPlus()
+	{
+		String str = "5";
+		try
+		{
+			int i = StaticNumberProcesser.parseIntPlus(str);
+
+		}
+		catch(Exception e)
+		{
+			System.out.println("error");
+		}
 	}
 
 }

@@ -27,6 +27,23 @@ public class StaticNumberProcesser
 	}
 	/**
 		<p>
+			文字列化した数値をDouble.parseDoubleを使ってdoubleに変換するメソッド。
+			文字列がブランクの場合は、0を返す
+			@param String double化する数値文字列
+			@return double double化した数値
+		</p>
+	**/
+	public static double parseDoublePlus(String str) throws NumberFormatException
+	{
+		if(str=="")
+		{
+			return 0;
+		}
+
+		return Double.parseDouble(str);
+	}
+	/**
+		<p>
 			文字列化した数値をInteger.parseIntを使ってintに変換するメソッド。
 			文字列がブランクの場合は、0を返す
 			@param String int化する数値文字列

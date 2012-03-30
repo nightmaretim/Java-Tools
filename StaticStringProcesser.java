@@ -52,6 +52,27 @@ public class StaticStringProcesser
 
 	/**
 		<p>
+			ある文字列配列から、あるキャラクターを見つけて削除するstaticメソッド
+
+			@param s[] 対象キャラクターを削除する文字列配列
+			@return str[] 対象キャラクターを削除した文字列配列
+		</p>
+	**/
+	public static String[] characterDeleterArray(String s[] , char c)
+	{
+		String[] str = new String[s.length];
+
+		for (int i = 0 ; i < s.length ; i++)
+		{
+			str[i] = StaticStringProcesser.characterDeleter(s[i] , c);
+		}
+
+		return str;
+	}
+
+
+	/**
+		<p>
 			文字列(String)と変換したい文字列(String)と変換する文字(String)を受け取り、
 			文字列内を検索し変換するstaticメソッドです。
 
@@ -149,8 +170,12 @@ public class StaticStringProcesser
 			@return 余計な空白を削除した文字列。
 		</p>
 	**/
-	public static String spaceTrimer(String st)
+	public static String afterSpaceTrimer(String st)
 	{
+		//受け取った文字列が空だった場合、すぐreturnして戻る
+		if(st.equals(""))
+			return st;
+
 		//return用文字列
 		String s_str = "";
 
@@ -372,26 +397,6 @@ public class StaticStringProcesser
 
 	/**
 		<p>
-			ある文字列配列から、あるキャラクターを見つけて削除するstaticメソッド
-
-			@param s[] 対象キャラクターを削除する文字列配列
-			@return str[] 対象キャラクターを削除した文字列配列
-		</p>
-	**/
-	public static String[] characterDeleterArray(String s[] , char c)
-	{
-		String[] str = new String[s.length];
-
-		for (int i = 0 ; i < s.length ; i++)
-		{
-			str[i] = StaticStringProcesser.characterDeleter(s[i] , c);
-		}
-
-		return str;
-	}
-
-	/**
-		<p>
 			文字列が最後の文字が指定されたcharで終わるか確認するメソッドです。
 
 			@param s 調査対象文字列
@@ -401,6 +406,10 @@ public class StaticStringProcesser
 	**/
 	public static boolean characterCheckLast(String s , char c)
 	{
+		//引数で与えられた文字列が空だった場合の対処
+		if(s.equals(""))
+			return false;
+
 		if (s.charAt(s.length() - 1) == c)
 		{
 			return true;

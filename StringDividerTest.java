@@ -30,6 +30,19 @@ public class StringDividerTest extends TestCase {
 	}
 
 	@Test
+	public void testNumArrangementDividerByteSpaceTrim() {
+		String str = "AAAAA‚ ‚¢‚¤‚¦‚¨BBBBB";
+		int num[] ={5,10,5};
+		StringDivider sd = new StringDivider(str,num);
+		String kekka[] = sd.numArrangementDividerByteSpaceTrim();
+
+		assertEquals(kekka[0] , "AAAAA");
+		assertEquals(kekka[1] , "‚ ‚¢‚¤‚¦‚¨");
+		assertEquals(kekka[2] , "BBBBB");
+
+	}
+
+	@Test
 	public void testNumArrangementDividerByte() {
 		String str = "AAAAA‚ ‚¢‚¤‚¦‚¨BBBBB";
 		int num[] ={5,10,5};

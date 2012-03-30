@@ -197,10 +197,12 @@ public String[] delimiterDividerWith(char c)
 			分割した文字列を文字列配列に格納して
 			returnする。
 
+			付帯機能として、スペースを除去する
+
 			@return 分割した文字列の配列
 		</p>
 	 **/
-	public String[] numArrangementDivider()
+	public String[] numArrangementDividerSpaceTrim()
 	{
 		//一時保管用文字列変数
 		String temp = "";
@@ -261,12 +263,121 @@ public String[] delimiterDividerWith(char c)
 			分割文字数が書かれた配列を用いた分割を行うメソッド。
 			分割した文字列を文字列配列に格納して
 			returnする。
+
+			@return 分割した文字列の配列
+		</p>
+	 **/
+	public String[] numArrangementDivider()
+	{
+		//一時保管用文字列変数
+		String temp = "";
+
+		int a = 0;
+		int b = 0;
+
+		for (int i = 0 ; i < db_string.length() ; i++)
+		{
+
+
+
+			if(a == d_num[b])
+			{
+				//ベクトルに格納
+				r_vector.add(temp);
+				//temp初期化
+				temp = "";
+				a=0;
+				b++;
+				if(d_num.length < b)
+				{
+					break;
+				}
+				i--;
+
+			}
+			else
+			{
+				temp = temp + db_string.charAt(i);
+				a++;
+			}
+
+		}
+
+		//ループ終了後、tempに文字があれば、
+		//ベクトルに追加する
+		if (temp.equals("")==false)
+		{
+			//ベクトルに追加
+			r_vector.add(temp);
+			temp="";
+		}
+
+		//return文字列配列
+		String r_string[] = new String[r_vector.size()];
+		for(int i = 0 ; i < r_vector.size() ; i++)
+		{
+			r_string[i] = (String)r_vector.elementAt(i);
+		}
+
+		return r_string;
+	}
+
+	/**
+		<p>
+			分割文字数が書かれた配列を用いた分割を行うメソッド。
+			分割した文字列を文字列配列に格納して
+			returnする。
 			バイト配列を用いるため、半角、全角を正確に分割する。
 
 			@return 分割した文字列の配列
 		</p>
 	 **/
 	public String[] numArrangementDividerByte()
+	{
+		//文字列分割のためのtemp
+		int a = 0;
+		//バイト配列
+		byte by[] = db_string.getBytes();
+
+		for (int i = 0 ; i < d_num.length ; i++)
+		{
+
+			byte bytemp[] = new byte[d_num[i]];
+
+			for (int j = 0 ; j < d_num[i] ; j++)
+			{
+				bytemp[j] = by[a + j];
+			}
+			//ベクトルに格納
+			r_vector.add(new String(bytemp));
+			//次スタート数を保管
+			a = a + d_num[i];
+
+		}
+
+		//return文字列配列
+		String r_string[] = new String[r_vector.size()];
+		for(int i = 0 ; i < r_vector.size() ; i++)
+		{
+			r_string[i] = (String)r_vector.elementAt(i);
+		}
+
+		return r_string;
+	}
+
+	/**
+		<p>
+			分割文字数が書かれた配列を用いた分割を行うメソッド。
+			分割した文字列を文字列配列に格納して
+			returnする。
+			バイト配列を用いるため、半角、全角を正確に分割する。
+
+			付加機能として、スペースを削除する。
+
+			@return 分割した文字列の配列
+		</p>
+	 **/
+	public String[] numArrangementDividerByteSpaceTrim()
 	{
 		//文字列分割のためのtemp
 		int a = 0;

@@ -60,7 +60,7 @@ public class TimeTool
 
 		StringDivider sd = new StringDivider(yymmdd , num);
 
-		String str[] = sd.numArrangementDivider();
+		String str[] = sd.numArrangementDividerSpaceTrim();
 
 		String return_string = "";
 
@@ -297,7 +297,7 @@ public class TimeTool
 		int num[] = {2,2};
 		StringDivider sd = new StringDivider(yymm , num);
 
-		String str[] = sd.numArrangementDivider();
+		String str[] = sd.numArrangementDividerSpaceTrim();
 
 		String return_string = "";
 
